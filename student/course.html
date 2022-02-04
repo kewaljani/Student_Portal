@@ -1,0 +1,246 @@
+<html lang="en">
+<head>
+	<title>Course</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+		function change(x)
+			{
+			window.location.href=x+".html";
+			}
+function myFunction() {
+    var input, filter, ul, li, a, i, txtValue;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("myUL");
+    li = ul.getElementsByTagName("li");
+    for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByTagName("a")[0];
+        txtValue = a.textContent || a.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+        }
+    }
+}
+	</script>
+
+
+	<style type="text/css">
+		.img
+			{
+			margin-right:40px
+			}
+		.img:hover
+			{
+			-ms-transform: scale(1.5); /* IE 9 */
+			-webkit-transform: scale(1.5); /* Safari 3-8 */
+			transform: scale(1.5);
+			}
+		.bot{
+
+            width:100%;
+            height:87%;
+            overflow: scroll;
+			background-color:white;
+            -ms-overflow-style: none;  /* Internet Explorer 10+ */
+            scrollbar-width: none;  /* Firefox */
+            }
+        .bot::-webkit-scrollbar
+			{
+            display: none;  /* Safari and Chrome */
+            }
+		.rightcol
+			{
+			 width:100%;
+			 height:80%;
+			background-color:white;
+			}
+			a {
+			text-decoration: none;
+				  display: inline-block;
+				  padding: 8px 16px;
+				}
+
+				a:hover {
+				  background-color: #ddd;
+				  color: black;
+				}
+
+				.previous {
+				  background-color: #f1f1f1;
+				  color: black;
+				}
+
+				.next {
+				  background-color: #4CAF50;
+				  color: white;
+				}
+
+				.round {
+				  border-radius: 50%;
+				}
+	</style>
+</head>
+<body>
+
+	<div class="jumbotron text-center " style="padding-left: 0px;padding-right: 0px;padding-bottom: 0px; padding-top: 34px;" >
+		<h1 style="padding-bottom: 20px;">Student-Portal</h1>
+		<div><nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="background-color:#2a2929 !important">
+			<a class="navbar-brand" href="https://www.ldrp.ac.in/">LDRP-ITR</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+			</button>
+
+				<div class="collapse navbar-collapse" id="navbarColor02">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item active">
+						<a class="nav-link" href="timeline.html">Home <span class="sr-only">(current)</span></a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="course.html">Course</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="timetable.html">Time Table</a>
+					</li>
+				</ul>
+					<button class="btn btn-secondary my-2 my-sm-0" type="button" onclick="location.href='studentlogin.html'">Logout</button>
+			</div>
+		</nav></div>
+	</div>
+	<div class="wrapper">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-sm-3 " style="height:700px ">
+					<div class="leftcol" style="padding-bottom: 30px;">
+						<div class="card" style="height:300px margin-bottom:50px" >
+							<div class="card-header border-0" ><p style="font-size:30px"><img src="student_login.png" height="100px" width="100px" alt="profile logo" style="margin-right:45px">Kewal jani</p></div>
+								<div class="card-body" style="padding-top:5px">
+									<p style="font-size:20px">computer engineering</p>
+									<p style="font-size:20px">semester 8th</p>
+								</div>
+								<div class="card-footer"><button type="button" class="btn btn-secondary">visit profile</button></div>
+						</div>
+					</div>
+					<div class="container-fluid">
+						<div class="botleft">
+						<iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;ctz=Asia%2FKolkata&amp;src=ZW4uaW5kaWFuI2hvbGlkYXlAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&amp;color=%23227F63"  width="100%" height="300px" frameborder="0" scrolling="no"></iframe>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6  " style="height:700px">
+
+			<div class="container-fluid table-responsive-sm" style="height:410px">
+				<div class="bot">
+					<div class="top">
+						<h1 id="heading">Course</h1>
+					</div>
+
+              <form action=course.php method="post">
+                <fieldset>
+                  <div class="form-group">
+                    <label for="exampleSelect1">Branch</label>
+                    <select class="form-control" id="exampleSelect1" name="branch">
+                      <option>M.E</option>
+                      <option>C.E</option>
+                      <option>I.T</option>
+											<option>E.C</option>
+                      <option>Civil</option>
+                      <option>Electrical</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleSelect1">Semester</label>
+                    <select class="form-control" id="exampleSelect1" name="semester">
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                      <option>5</option>
+                      <option>6</option>
+                      <option>7</option>
+                      <option>8</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputText">Subject</label>
+                    <input type="text" class="form-control" id="exampleInputText" name="subject" aria-describedby="emailHelp" placeholder="Enter Subject">
+                  </div>
+                  <button type="submit" class="btn btn-primary">Search</button>
+                </fieldset>
+              </form>
+						</div>
+					</div>
+							<div class="top">
+								<h1 id="heading">Papers</h1>
+							</div>
+
+							<div class="container-fluid table-responsive-sm">
+								<div class="bot">
+									<form>
+										<fieldset>
+											<div class="form-group">
+												<label for="exampleSelect1">Branch</label>
+												<select class="form-control" id="exampleSelect2">
+													<option>M.E</option>
+													<option>C.E</option>
+													<option>I.T</option>
+													<option>Civil</option>
+													<option>Electrical</option>
+												</select>
+											</div>
+											<div class="form-group">
+												<label for="exampleSelect1">Semester</label>
+												<select class="form-control" id="exampleSelect1">
+													<option>1</option>
+													<option>2</option>
+													<option>3</option>
+													<option>4</option>
+													<option>5</option>
+													<option>6</option>
+													<option>7</option>
+													<option>8</option>
+												</select>
+											</div>
+											<div class="form-group">
+												<label for="exampleInputText">Subject</label>
+												<input type="text" class="form-control" id="exampleInputText" aria-describedby="emailHelp" placeholder="Enter Subject">
+											</div>
+											<button type="submit" class="btn btn-primary">Search</button>
+										</fieldset>
+									</form>
+								</div>
+							</div>
+
+				</div>
+				<div class="col-sm-3  "  >
+					<div class="rightcol" style="height:100%">
+						<div class="row pt-3">
+							<p style="font-size:30px"><img src="events.png" height="100px" width="100px" class="img" onclick="change('Timeline')">Timeline</p>
+						</div>
+						<div class="row pt-3">
+							<p style="font-size:30px"><img src="submission.png" height="100px" width="100px" class="img" onclick="change('Submission');">Submission</p>
+						</div>
+						<div class="row pt-3">
+							<p style="font-size:30px"><img src="message.png" height="100px" width="100px" class="img" onclick="change('Messages');">Messages</p>
+						</div>
+						<div class="row pt-3">
+							<p style="font-size:30px"><img src="placement.png" height="100px" width="100px" class="img" onclick="change('Placements');">Placements</p>
+						</div>
+						<div class="row pt-3">
+								<p style="font-size:30px"><img src="cal.png" height="100px" width="100px" class="img" onclick="change('Todo');">To-do list</p>
+						</div>
+					</div>
+
+	</div>
+  </div>
+</div>
+</div>
+
+</body>
+</html>

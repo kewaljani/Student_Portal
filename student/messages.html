@@ -1,0 +1,476 @@
+
+<html lang="en">
+<head>
+	<title>Student Portal</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+	function previous()
+	{
+		if(typeof page=='undefined'||page==0)
+		{
+			alert("not able to go back")
+		}
+		else {
+			{
+				page=page-1;
+				document.cookie=page;
+				var d=document.cookie;
+				//alert(d);
+			}
+		}
+		//alert(d);
+	 var val=d.split(";")
+	 //alert(val[0]*10)
+	 val=val[0]*10;
+	 var xhttp;
+	 xhttp = new XMLHttpRequest(); // Obect of xmlhttp request
+	 xhttp.onreadystatechange = function() {
+		 if (xhttp.readyState == 4 && xhttp.status == 200) { // Check the status - if everything goes fine
+			 //echo myarray.row;
+		 var myObj = JSON.parse(JSON.stringify(this.responseText));
+				 var array=myObj.split('<br>');
+				 //alert(myObj);
+
+			 var display= JSON.parse(array[0]);
+			 //alert(display.display);
+			 document.getElementById("login_name").innerHTML=display.display;
+			 for (i = 0; i <array.length-1; i++) {
+				 //alert(array);
+				 if (typeof array[val]=='undefined')
+				 {
+					 document.getElementById(i+11).innerHTML ="";// display the content (response) from the serverside page
+					 document.getElementById(i+1).innerHTML= "";
+				 }
+				 else
+				 {
+				 var parser=JSON.parse(array[val+i]);
+				 //alert(parser)
+				 document.getElementById(i+11).innerHTML =parser.name;// display the content (response) from the serverside page
+				 document.getElementById(i+1).innerHTML= parser.subject;
+				 }
+			 }
+
+
+		 }
+	 }
+	 xhttp.open("POST", "message_db.php", true); // this is the url
+ //	parameters = "uname= "+uname;
+	 xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	 xhttp.send();
+
+	}
+	function next()
+	{
+
+		if(typeof page=='undefined')
+		{
+			page=1
+			//alert(page)
+			document.cookie=page;
+			var d=document.cookie;
+			alert(d);
+		}
+	  else {
+	  	{
+				page=page+1;
+				document.cookie=page;
+				var d=document.cookie;
+				alert(d);
+			}
+	  }
+		alert("hey")
+		//var uname = document.getElementById("uname").value;
+		 //alert(d);
+		var val=d.split(";")
+		//alert(val[0]*10)
+		val=val[0]*10;
+		var xhttp;
+		xhttp = new XMLHttpRequest(); // Obect of xmlhttp request
+		xhttp.onreadystatechange = function() {
+			if (xhttp.readyState == 4 && xhttp.status == 200) { // Check the status - if everything goes fine
+				//echo myarray.row;
+			var myObj = JSON.parse(JSON.stringify(this.responseText));
+					var array=myObj.split('<br>');
+					//alert(myObj);
+
+				var display= JSON.parse(array[0]);
+				//alert(display.display);
+				document.getElementById("login_name").innerHTML=display.display;
+				for (i = 0; i <array.length-1; i++) {
+					//alert(array);
+					if (val+i>=array.length-1)
+					{
+						document.getElementById(i+11).innerHTML ="";// display the content (response) from the serverside page
+						document.getElementById(i+1).innerHTML= "";
+					}
+					else
+					{
+					var parser=JSON.parse(array[val+i]);
+					//alert(parser)
+					document.getElementById(i+11).innerHTML =parser.name;// display the content (response) from the serverside page
+					document.getElementById(i+1).innerHTML= parser.subject;
+					}
+				}
+
+
+			}
+		}
+		xhttp.open("POST", "message_db.php", true); // this is the url
+	//	parameters = "uname= "+uname;
+		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		xhttp.send();
+
+
+
+	}
+		function change(x)
+			{
+				window.location.href=x+".html";
+			}
+function myFunction() {
+    var input, filter, ul, li, a, i, txtValue;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("myUL");
+    li = ul.getElementsByTagName("li");
+    for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByTagName("a")[0];
+        txtValue = a.textContent || a.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+        }
+    }
+}
+
+
+function getmsg(x)
+{
+	if(typeof page=='undefined')
+	{
+		page=0
+		//alert(page)
+		document.cookie=page;
+		var d=document.cookie;
+		alert(d);
+	}
+	d=document.cookie;
+	var val=d.split(";")
+	//alert(val[0]*10)
+	val=val[0]*10;
+	x=val+x;
+	var xhttp;
+	xhttp = new XMLHttpRequest(); // Obect of xmlhttp request
+	xhttp.onreadystatechange = function() {
+		if (xhttp.readyState == 4 && xhttp.status == 200) { // Check the status - if everything goes fine
+			//alert(xhttp.response);
+			 window.location.href="display_message.html"// display the content (response) from the serverside page
+		}
+	}
+	//alert(x);
+	xhttp.open("POST", "msg.php", true); // this is the url
+  parameters = "sub="+x;
+	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	xhttp.send(parameters);
+}
+
+	function retrive()
+	      {
+				//	alert("hey")
+					//var uname = document.getElementById("uname").value;
+					var xhttp;
+					xhttp = new XMLHttpRequest(); // Obect of xmlhttp request
+					xhttp.onreadystatechange = function() {
+						if (xhttp.readyState == 4 && xhttp.status == 200) { // Check the status - if everything goes fine
+							var myObj = JSON.parse(JSON.stringify(this.responseText));
+							//alert(myObj);
+							var array=myObj.split('<br>');
+							var display= JSON.parse(array[0]);
+							//alert(display.display);
+							document.getElementById("login_name").innerHTML=display.display;
+							for (i = 1; i <array.length; i++) {
+							//	alert(array[i]);
+								var parser=JSON.parse(array[i-1]);
+								document.getElementById(i).innerHTML =parser.name;// display the content (response) from the serverside page
+
+							}
+
+						}
+					}
+					xhttp.open("POST", "message_db.php", true); // this is the url
+				//	parameters = "uname= "+uname;
+					xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+					xhttp.send();
+}
+	</script>
+
+
+	<style type="text/css">
+	.sen {
+		background-color: #4CAF50; /* Green */
+		border: none;
+		color: white;
+		padding: 10px 24px;
+		text-align: center;
+		text-decoration: none;
+		display: inline-block;
+		font-size: 16px;
+		margin: 4px 2px;
+		border-radius: 4px;
+		transition-duration: 0.4s;
+		cursor: pointer;
+		-ms-overflow-style: none;  /* Internet Explorer 10+ */
+		scrollbar-width: none;  /* Firefox */
+	}
+	.sen::-webkit-scrollbar
+	{
+			display: none;  /* Safari and Chrome */
+	}
+	.sen1 {
+		background-color: white;
+		color: black;
+		border: 2px solid #008CBA;
+	}
+
+	.sen1:hover {
+		background-color: #008CBA;
+		color: white;
+						}
+						.dropdown {
+			position: relative;
+			display: inline-block;
+		}
+		.img
+			{
+			margin-right:40px
+			}
+		.img:hover
+			{
+			-ms-transform: scale(1.5); /* IE 9 */
+			-webkit-transform: scale(1.5); /* Safari 3-8 */
+			transform: scale(1.5);
+			}
+		.bot{
+
+            width:100%;
+            height:87%;
+            overflow: scroll;
+			background-color:white;
+            -ms-overflow-style: none;  /* Internet Explorer 10+ */
+            scrollbar-width: none;  /* Firefox */
+            }
+        .bot::-webkit-scrollbar
+			{
+            display: none;  /* Safari and Chrome */
+            }
+		.rightcol
+			{
+			 width:100%;
+			 height:80%;
+			background-color:white;
+			}
+			a{
+			text-decoration: none;
+				  display: inline-block;
+				  padding: 8px 16px;
+				}
+
+				a:hover {
+				  background-color: #ddd;
+				  color: black;
+				}
+
+				.previous {
+				  background-color: #f1f1f1;
+				  color: black;
+				}
+
+				.next {
+				  background-color: #4CAF50;
+				  color: white;
+				}
+
+				.round {
+				  border-radius: 50%;
+				}
+	</style>
+</head>
+<body onload="retrive();">
+
+	<div class="jumbotron text-center " style="padding-left: 0px;padding-right: 0px;padding-bottom: 0px; padding-top: 34px;" >
+		<h1 style="padding-bottom: 20px;">Student-Portal</h1>
+		<div><nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="background-color:#2a2929 !important">
+			<a class="navbar-brand" href="https://www.ldrp.ac.in/">LDRP-ITR</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+			</button>
+
+				<div class="collapse navbar-collapse" id="navbarColor02">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item active">
+						<a class="nav-link" href="timeline.html">Home <span class="sr-only">(current)</span></a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="Course.html">Course</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="timetable.html">Time Table</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">about</a>
+					</li>
+				</ul>
+				<button class="btn btn-secondary my-2 my-sm-0" type="button" onclick="location.href='kewal_login.html'">Logout</button>
+			</div>
+		</nav></div>
+	</div>
+	<div class="wrapper">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-sm-3 " style="height:700px ">
+					<div class="leftcol" style="padding-bottom: 30px;">
+						<div class="card" style="height:300px margin-bottom:50px" >
+							<div class="card-header border-0" >
+								<div class="row">
+									<div class="col-sm-4">
+										<img src="student_login.png" height="100px" width="100px" alt="profile logo" style="margin-right:45px">
+									</div>
+									<div class="col-sm-8">
+										<p class="container-fluid" id="login_name" style="font-size:30px;margin-top: 15px;margin-right: 20px;"></p	>
+
+									</div>
+								</div>
+
+							</div>
+								<div class="card-body" style="padding-top:5px">
+									<p style="font-size:20px">computer engineering</p>
+									<p style="font-size:20px">semester 8th</p>
+								</div>
+								<div class="card-footer"><button type="button" class="btn btn-secondary">visit profile</button></div>
+						</div>
+					</div>
+					<div class="container-fluid">
+						<div class="botleft">
+						<iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;ctz=Asia%2FKolkata&amp;src=ZW4uaW5kaWFuI2hvbGlkYXlAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&amp;color=%23227F63"  width="100%" height="300px" frameborder="0" scrolling="no"></iframe>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6  " style="height:700px">
+
+					<div class="top">
+						<h1 id="heading">Message</h1>
+					</div>
+
+					<div class="container-fluid table-responsive-sm">
+						<div class="bot" style="text-align:center;">
+							<table class="table table-hover" style="margin-bottom: 0px;" >
+							<thead>
+								<tr style="font-size:20px">
+								  <th >Check</th>
+								  <th >Name</th>
+
+								</tr>
+
+							</thead>
+							<tbody>
+								<tr data-toggle="popover" data-trigger="hover"  height="50px" onclick="getmsg(1);">
+									<td width="35%" ><input type="checkbox"> </td>
+									<td width="65%" id=1></td>
+
+								</tr>
+								<tr height="50px" onclick="getmsg(2);" >
+									<td><input type="checkbox"></td>
+									<td id=2></td>
+
+								</tr>
+								<tr height="50px" onclick="getmsg(3);">
+									<td><input type="checkbox"></td>
+									<td id=3></td>
+
+								</tr>
+								<tr height="50px" onclick="getmsg(4);">
+									<td><input type="checkbox"></td>
+									<td id=4></td>
+
+								</tr>
+								<tr height="50px" onclick="getmsg(5);">
+									<td><input type="checkbox"></td>
+									<td id=5></td>
+
+								</tr>
+								<tr height="50px" onclick="getmsg(6);">
+									<td><input type="checkbox"></td>
+									<td id=6></td>
+
+								</tr>
+								<tr height="50px" onclick="getmsg(7);">
+									<td><input type="checkbox"></td>
+									<td id=7></td>
+
+								</tr>
+								<tr height="50px" onclick="getmsg(8);">
+									<td><input type="checkbox"></td>
+									<td id=8></td>
+
+								</tr>
+								<tr height="50px" onclick="getmsg(9);">
+									<td><input type="checkbox"></td>
+									<td id=9></td>
+
+								</tr>
+								<tr height="50px"  onclick="getmsg(10);">
+									<td><input type="checkbox"></td>
+									<td id=10></td>
+
+								</tr >
+
+							</tbody>
+							</table>
+
+							<div class="pagination row" >
+
+
+
+								 <div class="page-item col-sm-3 offset-sm-1" style="border-color:gray" ><a class="page-link" style="padding:10px 0 10px 20px; color:#000;" href="#" onclick="previous();">Previous</a></div>
+
+								 <div class="col-sm-2 offset-sm-1"> <button class="sen sen1" onclick="location.href='custommessage.html'">Send</button>
+								 </div>
+								 <div class="page-item col-sm-3 offset-sm-2"><a class="page-link" style="padding:10px 0 10px 30px; color:#132;" href="#" onclick="next();">Next</a></div>
+								 </div>
+
+
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-3  "  >
+					<div class="rightcol" style="height:100%">
+						<div class="row pt-3">
+							<p style="font-size:30px"><img src="events.png" height="100px" width="100px" class="img" onclick="change('Timeline')">Timeline</p>
+						</div>
+						<div class="row pt-3">
+							<p style="font-size:30px"><img src="submission.png" height="100px" width="100px" class="img" onclick="change('Submission');">Submission</p>
+						</div>
+						<div class="row pt-3">
+							<p style="font-size:30px"><img src="message.png" height="100px" width="100px" class="img" onclick="change('Messages');">Messages</p>
+						</div>
+						<div class="row pt-3">
+							<p style="font-size:30px"><img src="placement.png" height="100px" width="100px" class="img" onclick="change('Placement');">Placements</p>
+						</div>
+						<div class="row pt-3">
+						    <p style="font-size:30px"><img src="cal.png" height="100px" width="100px" class="img" onclick="change('Todo');">To-do list</p>
+						</div>
+					</div>
+
+	</div>
+  </div>
+</div>
+</div>
+
+</body>
+</html>

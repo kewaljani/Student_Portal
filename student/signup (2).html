@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: Times New Roman;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.bg-image {
+  /* The image used */
+  background-image: url("logo/ldrp.png");
+
+  /* Add the blur effect */
+  filter: blur(5px);
+  -webkit-filter: blur(5px);
+
+  /* Full height */
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* Position text in the middle of the page/image */
+.bg-text {
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
+  color: white;
+  font-weight: bold;
+  border: 3px solid #f1f1f1;
+  border-radius: 10px;
+  border-color:black;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 520px;
+  height: 540px;
+  padding: 20px;
+  text-align: center;
+}
+.space
+{
+  margin: 0 0 20px 0
+}
+.btn {
+/*  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);*/
+  background-color: #f1f1f1;
+  color: black;
+  font-size: 16px;
+  padding: 16px 30px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: center;
+  margin:25px 0 0 0;
+}
+
+.btn:hover {
+  background-color: black;
+  color: white;
+}
+input[type=text] {
+  width: 250px;
+  height: 30px;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border-radius: 4px;
+  border: 3px solid #ccc;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+}
+input[type=password] {
+  width: 250px;
+  height: 30px;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border-radius: 4px;
+  border: 3px solid #ccc;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+}
+
+input[type=text]:focus {
+  border: 3px solid black;
+}
+input[type=password]:focus {
+  border: 3px solid black;
+}
+#space{
+	margin:30px 0 0 0;
+}
+</style>
+<script>
+
+</script>
+
+</head>
+<body>
+  <div class="bg-image"></div>
+
+  <div class="bg-text">
+
+      <table>
+        <tr>
+          <td >
+            <input type="text" placeholder="First name"  id="first" required style="width:200px; margin:25px 0 0 15px; height:40px" ></input>
+          </td>
+          <td> <input type="text" placeholder="Last name" id="last" required style="width:200px; margin:25px 0 0 20px; height:40px"></input>
+          </td>
+        </tr>
+      </table>
+      <table>
+        <tr>
+          <td>
+          <input type="text" id="enrollment" placeholder="Enrollment Number" required style="width:420px; margin:25px 0 0 15px; height:40px"></input>
+        </td>
+        </tr>
+      </table>
+      <table>
+        <tr>
+          <td >
+            <input type="password" placeholder="Password" id="pswrd" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" style="width:200px; margin:25px 0 0 15px; height:40px" ></input>
+          </td>
+          <td> <input type="password" id="pswrd" name="psw" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
+          </td>
+        </tr>
+      </table>
+      <p style="text-align:left; margin:5px 0 0 20px;">Use 8 or more characters with a mix of letters, numbers & symbols</p>
+      <table>
+        <tr>
+          <td>
+          <input type="text" placeholder="Email" name="email" id="email" pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\S-\.]+)\.([a-zA-Z]{2,5})$" required title="improper email id"
+           style="width:420px; margin:10px 0 0 15px; height:40px"></input>
+        </td>
+        </tr>
+      </table>
+      <table>
+        <tr>
+          <td>
+            <input type="text" placeholder="Branch" name="branch" id="branch" required style="width:200px; margin:25px 0 0 15px; height:40px" ></input>
+          </td>
+          <td>
+            <input type="text" placeholder="Year" name="year" id="year" required style="width:200px; margin:25px 0 0 15px; height:40px" ></input>
+          </td>
+        </tr>
+      </table>
+      <button type="submit" value="signup" class="btn" onclick="ValidateEmail()">Sign In</button>
+
+  </div>
+  <script type="text/javascript">
+  function ValidateEmail(){
+    var vemail = document.getElementById("email");
+    var first=document.getElementById('first').value;
+    var last=document.getElementById('last').value;
+    var email=document.getElementById('email').value;
+    var enrollment=document.getElementById('enrollment').value;
+    var pswrd=document.getElementById('pswrd').value;
+    var cpswr=document.getElementById('cpswrd').value;
+    var year=document.getElementById('year').value;
+    var branch=document.getElementById('branch').value;
+  //  var remail=document.getElementById('remail').value;
+    var xhttp;
+    //alert(first,pswrd,last,email,enrollment,cpswr);
+    xhttp = new XMLHttpRequest(); // Obect of xmlhttp request
+    xhttp.onreadystatechange = function()
+    {
+      if (xhttp.readyState == 4 && xhttp.status == 200)
+      { // Check the status - if everything goes fine
+        alert(xhttp.response)
+         window.location.href="studentlogin.html"// display the content (response) from the serverside page
+      }
+    }
+
+    xhttp.open("POST", "db.php", true); // this is the url
+    parameters = "email= "+email+ "&first="+first+ "&last="+last+ "&pswrd="+pswrd+ "&cpswrd="+cpswr+ "&enrollment="+enrollment+"&year="+year+"&branch="+branch;
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send(parameters);
+    var mailformat =  /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    if (mailformat.test(vemail)==false){
+      alert(email);
+      //vemail.border = px solid red;
+      return false;
+    }
+  }
+  </script>
+  </body>
+</html>

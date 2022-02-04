@@ -1,0 +1,213 @@
+
+<html lang="en">
+<head>
+	<title>Time table</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+		function change(x)
+			{
+			document.getElementById("heading").innerHTML=x;
+			}
+function myFunction() {
+    var input, filter, ul, li, a, i, txtValue;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("myUL");
+    li = ul.getElementsByTagName("li");
+    for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByTagName("a")[0];
+        txtValue = a.textContent || a.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+        }
+    }
+}
+	</script>
+
+
+	<style type="text/css">
+		.img
+			{
+			margin-right:40px
+			}
+		.img:hover
+			{
+			-ms-transform: scale(1.5); /* IE 9 */
+			-webkit-transform: scale(1.5); /* Safari 3-8 */
+			transform: scale(1.5);
+			}
+		.bot{
+
+            width:100%;
+            height:87%;
+            overflow: scroll;
+			background-color:white;
+            -ms-overflow-style: none;  /* Internet Explorer 10+ */
+            scrollbar-width: none;  /* Firefox */
+            }
+        .bot::-webkit-scrollbar
+			{
+            display: none;  /* Safari and Chrome */
+            }
+		.rightcol
+			{
+			 width:100%;
+			 height:80%;
+			background-color:white;
+			}
+			a {
+			text-decoration: none;
+				  display: inline-block;
+				  padding: 8px 16px;
+				}
+
+				a:hover {
+				  background-color: #ddd;
+				  color: black;
+				}
+
+				.previous {
+				  background-color: #f1f1f1;
+				  color: black;
+				}
+
+				.next {
+				  background-color: #4CAF50;
+				  color: white;
+				}
+
+				.round {
+				  border-radius: 50%;
+				}
+	</style>
+</head>
+<body>
+
+	<div class="jumbotron text-center " style="padding-left: 0px;padding-right: 0px;padding-bottom: 0px; padding-top: 34px;" >
+		<h1 style="padding-bottom: 20px;">Teacher's-Portal</h1>
+		<div><nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="background-color:#2a2929 !important">
+			<a class="navbar-brand" href="https://www.ldrp.ac.in/">LDRP-ITR</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+			</button>
+
+				<div class="collapse navbar-collapse" id="navbarColor02">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item active">
+						<a class="nav-link" href="timeline.html">Home <span class="sr-only">(current)</span></a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="course.html">Course</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="timetable.html">Time Table</a>
+					</li>
+				</ul>
+					<button class="btn btn-secondary my-2 my-sm-0" type="button" onclick="location.href='teacherlogin.html'">Logout</button>
+			</div>
+		</nav></div>
+	</div>
+	<div class="wrapper">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-sm-3 " style="height:700px ">
+					<div class="leftcol" style="padding-bottom: 30px;">
+						<div class="card" style="height:300px margin-bottom:50px" >
+							<div class="card-header border-0" ><p style="font-size:30px"><img src="student_login.png" height="100px" width="100px" alt="profile logo" style="margin-right:45px">Kewal jani</p></div>
+								<div class="card-body" style="padding-top:5px">
+									<p style="font-size:20px">computer engineering</p>
+									<p style="font-size:20px">semester 8th</p>
+								</div>
+								<div class="card-footer"><button type="button" class="btn btn-secondary">visit profile</button></div>
+						</div>
+					</div>
+					<div class="container-fluid">
+						<div class="botleft">
+						<iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;ctz=Asia%2FKolkata&amp;src=ZW4uaW5kaWFuI2hvbGlkYXlAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&amp;color=%23227F63"  width="100%" height="300px" frameborder="0" scrolling="no"></iframe>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-9" style="height:700px">
+
+					<div class="top">
+						<h1 id="heading">Time Table</h1>
+					</div>
+					<div class="row" style="height:6%;">
+				<div class="btn-group" role="group" aria-label="Button group with nested dropdown" style="width:25%;">
+					<button type="button" class="btn btn-primary" style="border-radius: 0px;">Branch</button>
+					<div class="btn-group" role="group">
+						<button id="btnGroupDrop1" type="button" style="border-radius: 0px;" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+						<div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+							<a class="dropdown-item" href="#">M.E</a>
+							<a class="dropdown-item" href="#">C.E</a>
+							<a class="dropdown-item" href="#">I.T</a>
+							<a class="dropdown-item" href="#">E.C</a>
+							<a class="dropdown-item" href="#">Electrical</a>
+							<a class="dropdown-item" href="#">Civil</a>
+						</div>
+					</div>
+				</div>
+				<div class="btn-group" role="group" aria-label="Button group with nested dropdown" style="width:25%;">
+					<button type="button" class="btn btn-success" style="border-radius: 0px;">Semester</button>
+					<div class="btn-group" role="group">
+						<button id="btnGroupDrop2" type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="border-radius:0px;"></button>
+						<div class="dropdown-menu" aria-labelledby="btnGroupDrop2">
+							<a class="dropdown-item" href="#">1</a>
+							<a class="dropdown-item" href="#">2</a>
+							<a class="dropdown-item" href="#">3</a>
+							<a class="dropdown-item" href="#">4</a>
+							<a class="dropdown-item" href="#">5</a>
+							<a class="dropdown-item" href="#">6</a>
+							<a class="dropdown-item" href="#">7</a>
+							<a class="dropdown-item" href="#">8</a>
+						</div>
+					</div>
+				</div>
+
+				<div class="btn-group" role="group" aria-label="Button group with nested dropdown" style="width:25%;">
+					<button type="button" class="btn btn-info" style="border-radius: 0px;">Batch</button>
+					<div class="btn-group" role="group">
+						<button id="btnGroupDrop3" type="button" style="border-radius: 0px;" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+						<div class="dropdown-menu" aria-labelledby="btnGroupDrop3">
+							<a class="dropdown-item" href="#">All</a>
+							<a class="dropdown-item" href="#">1</a>
+							<a class="dropdown-item" href="#">2</a>
+							<a class="dropdown-item" href="#">3</a>
+						</div>
+					</div>
+				</div>
+
+				<div class="btn-group" role="group" aria-label="Button group with nested dropdown" style="width:25%;">
+					<button type="button" class="btn btn-danger" style="border-radius: 0px">Section</button>
+					<div class="btn-group" role="group">
+						<button id="btnGroupDrop4" type="button" style="border-radius: 0px;" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+						<div class="dropdown-menu" aria-labelledby="btnGroupDrop4">
+							<a class="dropdown-item" href="#">B</a>
+							<a class="dropdown-item" href="#">E</a>
+							<a class="dropdown-item" href="#">B*</a>
+							<a class="dropdown-item" href="#">E*</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row" style="height:1%;">
+		</div>
+		<button type="button" class="btn btn-outline-primary" style="width:10%;">Send</button>
+			<button type="button" class="btn btn-outline-primary" style="width:10%;">Browse</button>
+		<div class="row" style="height:1%;">
+	</div>
+	</div>
+  </div>
+</div>
+</div>
+
+</body>
+</html>
